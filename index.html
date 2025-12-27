@@ -21,31 +21,27 @@
     </div>
 
     <script type="module">
+        // ១. ហៅប្រើប្រាស់ Firebase តាមរយៈ CDN
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
         import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 
-
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA273ParAWzm4_vuPwO0OhjZ7oOLlPTv1Q",
-  authDomain: "luckytest-b2f38.firebaseapp.com",
-  databaseURL: "https://luckytest-b2f38-default-rtdb.firebaseio.com",
-  projectId: "luckytest-b2f38",
-  storageBucket: "luckytest-b2f38.firebasestorage.app",
-  messagingSenderId: "583820360492",
-  appId: "1:583820360492:web:f9887975b7abb4ff7dca89",
-  measurementId: "G-H00L4D154G"
-};
-
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+        // ២. កូដភ្ជាប់ Firebase របស់មិត្ត
+        const firebaseConfig = {
+            apiKey: "AIzaSyA273ParAWzm4_vuPwO0OhjZ7oOLlPTv1Q",
+            authDomain: "luckytest-b2f38.firebaseapp.com",
+            databaseURL: "https://luckytest-b2f38-default-rtdb.firebaseio.com",
+            projectId: "luckytest-b2f38",
+            storageBucket: "luckytest-b2f38.firebasestorage.app",
+            messagingSenderId: "583820360492",
+            appId: "1:583820360492:web:f9887975b7abb4ff7dca89",
+            measurementId: "G-H00L4D154G"
         };
 
+        // ៣. ចាប់ផ្តើមដំណើរការ Firebase
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+        
+        // ៤. ចាប់ផ្តើមដំណើរការ Telegram Web App
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
@@ -55,23 +51,25 @@ const analytics = getAnalytics(app);
         if (user) {
             const userRef = ref(db, 'users/' + user.id);
 
-          
+            // ពិនិត្យមើលទិន្នន័យភ្ញៀវ
             get(userRef).then((snapshot) => {
                 if (!snapshot.exists()) {
-                    
+                    // បើជាភ្ញៀវថ្មី៖ ចុះឈ្មោះអូតូ និងថែមលុយ $10
                     const newUser = {
                         name: user.first_name,
                         id: user.id,
-                        balance: 10.00, // 
+                        balance: 10.00,
                         registeredAt: new Date().toLocaleString()
                     };
                     set(userRef, newUser);
                     updateUI(newUser.name, newUser.id, newUser.balance);
                 } else {
-                    
+                    // បើភ្ញៀវចាស់៖ បង្ហាញទិន្នន័យដែលមានស្រាប់
                     const data = snapshot.val();
                     updateUI(data.name, data.id, data.balance);
                 }
+            }).catch((error) => {
+                console.error("Firebase Error: ", error);
             });
         }
 
@@ -83,4 +81,3 @@ const analytics = getAnalytics(app);
     </script>
 </body>
 </html>
-
