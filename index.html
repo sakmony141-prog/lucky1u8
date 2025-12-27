@@ -10,83 +10,127 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #1a1a1a; color: white; padding-bottom: 70px; }
 
-        /* ផ្នែកខាងលើ (Header) */
+        /* HEADER */
         .header { background: #2c2c2c; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #444; }
-        .logo { height: 40px; }
-        .header-right { display: flex; align-items: center; gap: 10px; }
+        .logo { height: 35px; }
         .balance-chip { background: #3d3d3d; padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; gap: 8px; font-weight: bold; color: #f1c40f; border: 1px solid #555; }
-        .btn-deposit { background: #f1c40f; color: black; padding: 6px 15px; border-radius: 5px; font-weight: bold; text-decoration: none; font-size: 14px; }
+        .btn-deposit-head { background: #f1c40f; color: black; padding: 6px 15px; border-radius: 5px; font-weight: bold; text-decoration: none; font-size: 13px; }
 
-        /* Banner */
-        .banner { width: 100%; height: 180px; background: url('https://your-banner-url.jpg') center/cover; margin-bottom: 20px; }
-
-        /* ម៉ឺនុយរហ័ស (Quick Actions) */
+        /* HOME SECTION STYLE */
+        .banner { width: 100%; height: 160px; background: url('https://via.placeholder.com/600x300') center/cover; margin-bottom: 20px; }
         .quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 15px; margin-bottom: 20px; }
-        .action-item { text-align: center; font-size: 12px; color: #bbb; }
-        .icon-box { background: #333; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; font-size: 20px; color: #f1c40f; }
+        .action-item { text-align: center; font-size: 11px; color: #bbb; }
+        .icon-box { background: #333; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; font-size: 18px; color: #f1c40f; }
+        .section-title { padding: 0 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: bold; color: #f1c40f; }
+        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 15px; margin-bottom: 20px; }
+        .game-card { background: #333; border-radius: 8px; overflow: hidden; position: relative; }
+        .game-card img { width: 100%; height: 100px; object-fit: cover; opacity: 0.8; }
+        .game-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); text-align: center; font-size: 10px; padding: 3px 0; color: #fff; }
 
-        /* បញ្ជីហ្គេម (Game Categories) */
-        .section-title { padding: 0 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: bold; color: #f1c40f; }
-        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 15px; margin-bottom: 25px; }
-        .game-card { background: #333; border-radius: 10px; overflow: hidden; position: relative; }
-        .game-card img { width: 100%; height: 120px; object-fit: cover; }
-        .game-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.7); text-align: center; font-size: 11px; padding: 3px 0; }
+        /* ACCOUNT SECTION STYLE */
+        #account-section { display: none; padding: 20px 15px; }
+        .profile-header { text-align: center; margin-bottom: 25px; }
+        .avatar-img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid #f1c40f; margin-bottom: 10px; object-fit: cover; }
+        .user-id-box { color: #888; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .vip-status { background: linear-gradient(90deg, #f1c40f, #aa6c06); color: black; padding: 2px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; margin-top: 5px; display: inline-block; }
+        
+        .balance-card { background: #262626; border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid #333; }
+        .balance-card .label { color: #888; font-size: 13px; margin-bottom: 5px; }
+        .balance-card .val { font-size: 24px; font-weight: bold; color: #f1c40f; }
+        .action-btns { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-main { flex: 1; padding: 10px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; text-align: center; text-decoration: none; font-size: 14px; }
+        .btn-gold { background: #f1c40f; color: black; }
+        .btn-dark { background: #3d3d3d; color: white; }
 
-        /* ម៉ឺនុយខាងក្រោម (Bottom Navigation) */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #222; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #444; }
-        .nav-item { text-align: center; font-size: 11px; color: #888; text-decoration: none; }
+        .menu-list { background: #262626; border-radius: 12px; overflow: hidden; }
+        .menu-item { padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; color: #ddd; font-size: 14px; text-decoration: none; }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item i { width: 25px; color: #f1c40f; }
+
+        /* BOTTOM NAV */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #222; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #444; z-index: 100; }
+        .nav-item { text-align: center; font-size: 10px; color: #666; text-decoration: none; flex: 1; }
         .nav-item.active { color: #f1c40f; }
-        .nav-item i { font-size: 20px; display: block; margin-bottom: 2px; }
+        .nav-item i { font-size: 20px; display: block; margin-bottom: 3px; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <img src="https://your-logo-url.png" alt="Logo" class="logo">
-        <div class="header-right">
+        <img src="https://via.placeholder.com/150x50?text=SKY+LOGO" alt="Logo" class="logo">
+        <div style="display: flex; align-items: center; gap: 10px;">
             <div class="balance-chip">
                 <i class="fas fa-coins"></i>
-                <span id="user-balance">0.00</span>
+                <span class="global-balance">0.00</span>
             </div>
-            <a href="#" class="btn-deposit">Deposit</a>
+            <a href="#" class="btn-deposit-head">Deposit</a>
         </div>
     </div>
 
-    <div class="banner"></div>
+    <div id="home-section">
+        <div class="banner"></div>
+        <div class="quick-actions">
+            <div class="action-item"><div class="icon-box"><i class="fas fa-wallet"></i></div>Deposit</div>
+            <div class="action-item"><div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>Withdraw</div>
+            <div class="action-item"><div class="icon-box"><i class="fas fa-tasks"></i></div>Task</div>
+            <div class="action-item"><div class="icon-box"><i class="fas fa-gift"></i></div>Invite</div>
+        </div>
 
-    <div class="quick-actions">
-        <div class="action-item"><div class="icon-box"><i class="fas fa-wallet"></i></div>Deposit</div>
-        <div class="action-item"><div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>Withdraw</div>
-        <div class="action-item"><div class="icon-box"><i class="fas fa-tasks"></i></div>Task</div>
-        <div class="action-item"><div class="icon-box"><i class="fas fa-gift"></i></div>Invite</div>
+        <div class="section-title"><i class="fas fa-slot-machine"></i> Slot Games</div>
+        <div class="game-grid">
+            <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PG SLOT</div></div>
+            <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PP SLOT</div></div>
+            <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">CQ9 SLOT</div></div>
+        </div>
+
+        <div class="section-title"><i class="fas fa-spade"></i> Live Casino</div>
+        <div class="game-grid">
+            <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PP LIVE</div></div>
+            <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">BBIN LIVE</div></div>
+            <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">DB LIVE</div></div>
+        </div>
     </div>
 
-    <div class="section-title"><i class="fas fa-slot-machine"></i> Slot Games</div>
-    <div class="game-grid">
-        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PG SLOT</div></div>
-        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PP SLOT</div></div>
-        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">CQ9 SLOT</div></div>
-    </div>
+    <div id="account-section">
+        <div class="profile-header">
+            <img id="user-avatar" src="https://via.placeholder.com/100?text=User" alt="Avatar" class="avatar-img">
+            <h2 id="user-display-name">Loading...</h2>
+            <div class="user-id-box">
+                ID: <span id="user-display-id">00000</span> <i class="far fa-copy" style="cursor:pointer"></i>
+            </div>
+            <span class="vip-status">VIP0</span>
+        </div>
 
-    <div class="section-title"><i class="fas fa-spade"></i> Live Casino</div>
-    <div class="game-grid">
-        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PP LIVE</div></div>
-        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">BBIN LIVE</div></div>
-        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">DB LIVE</div></div>
+        <div class="balance-card">
+            <div class="label">Total Balance</div>
+            <div class="val">$<span class="global-balance">0.00</span></div>
+            <div class="action-btns">
+                <a href="#" class="btn-main btn-gold">Deposit</a>
+                <a href="#" class="btn-main btn-dark">Withdraw</a>
+            </div>
+        </div>
+
+        <div class="menu-list">
+            <a href="#" class="menu-item"><div><i class="fas fa-shield-alt"></i> Safe Center</div> <i class="fas fa-chevron-right" style="color:#444"></i></a>
+            <a href="#" class="menu-item"><div><i class="fas fa-users"></i> Affiliate</div> <i class="fas fa-chevron-right" style="color:#444"></i></a>
+            <a href="#" class="menu-item"><div><i class="fas fa-history"></i> Betting History</div> <i class="fas fa-chevron-right" style="color:#444"></i></a>
+            <a href="#" class="menu-item"><div><i class="fas fa-globe"></i> Language</div> <i class="fas fa-chevron-right" style="color:#444"></i></a>
+            <div class="menu-item" style="justify-content: center; color: #ff4757; font-weight: bold; border-top: 1px solid #333; margin-top: 10px;">Log out</div>
+        </div>
     </div>
 
     <div class="bottom-nav">
-        <a href="#" class="nav-item active"><i class="fas fa-home"></i>Home</a>
+        <a href="#" id="nav-home" class="nav-item active"><i class="fas fa-home"></i>Home</a>
         <a href="#" class="nav-item"><i class="fas fa-bullhorn"></i>Promotion</a>
         <a href="#" class="nav-item"><i class="fas fa-headset"></i>Support</a>
-        <a href="#" class="nav-item"><i class="fas fa-user"></i>Account</a>
+        <a href="#" id="nav-account" class="nav-item"><i class="fas fa-user"></i>Account</a>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 
-        // *** កន្លែងនេះ៖ ណាវីតត្រូវដាក់ Firebase Config របស់មិត្ត ***
+        // CONFIG របស់មិត្ត
         const firebaseConfig = {
             apiKey: "AIzaSyA273ParAWzm4_vuPwO0OhjZ7oOLlPTv1Q",
             authDomain: "luckytest-b2f38.firebaseapp.com",
@@ -102,15 +146,47 @@
         const tg = window.Telegram.WebApp;
         tg.ready();
 
-        const user = tg.initDataUnsafe.user;
+        // មុខងារប្តូរទំព័រ (Navigation Logic)
+        const homeSection = document.getElementById('home-section');
+        const accountSection = document.getElementById('account-section');
+        const navHome = document.getElementById('nav-home');
+        const navAccount = document.getElementById('nav-account');
 
+        navHome.addEventListener('click', (e) => {
+            e.preventDefault();
+            homeSection.style.display = 'block';
+            accountSection.style.display = 'none';
+            navHome.classList.add('active');
+            navAccount.classList.remove('active');
+        });
+
+        navAccount.addEventListener('click', (e) => {
+            e.preventDefault();
+            homeSection.style.display = 'none';
+            accountSection.style.display = 'block';
+            navAccount.classList.add('active');
+            navHome.classList.remove('active');
+        });
+
+        // បង្ហាញព័ត៌មាន Profile ពី Telegram
+        const user = tg.initDataUnsafe.user;
         if (user) {
+            document.getElementById('user-display-name').innerText = user.first_name + (user.last_name ? ' ' + user.last_name : '');
+            document.getElementById('user-display-id').innerText = user.id;
+            if (user.photo_url) {
+                document.getElementById('user-avatar').src = user.photo_url;
+            }
+
+            // ទាញលុយពី Firebase
             const userRef = ref(db, 'users/' + user.id);
-            // ប្រើ onValue ដើម្បីឱ្យវា Update លុយអូតូពេលមិត្តកែក្នុង Firebase
             onValue(userRef, (snapshot) => {
                 if (snapshot.exists()) {
                     const data = snapshot.val();
-                    document.getElementById('user-balance').innerText = data.balance.toFixed(2);
+                    const balance = data.balance.toFixed(2);
+                    // ប្តូរលុយគ្រប់កន្លែងដែលមាន class 'global-balance'
+                    document.querySelectorAll('.global-balance').forEach(el => {
+                        el.innerText = balance;
+                    });
                 }
             });
         }
