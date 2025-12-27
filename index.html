@@ -8,7 +8,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
-        /* ២. ផ្នែករចនារូបរាង (CSS) */
+        
         body { background-color: #121212; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
         .header { background: #1a1a1a; padding: 15px; border-bottom: 2px solid #f39c12; text-align: center; }
         .user-panel { 
@@ -59,16 +59,16 @@
     </div>
 
     <script>
-        // ចាប់ផ្ដើមដំណើរការ Telegram Web App
+        
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
 
-        // ទាញទិន្នន័យពី Telegram
+        
         const user = tg.initDataUnsafe.user;
 
         if (user) {
-            // បញ្ចូលឈ្មោះ និង ID ទៅក្នុង HTML
+            
             document.getElementById('user-name').innerText = user.first_name;
             document.getElementById('user-id').innerText = user.id;
         }
@@ -76,3 +76,4 @@
 
 </body>
 </html>
+
