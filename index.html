@@ -2,78 +2,75 @@
 <html lang="km">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky-1U VIP</title>
-    
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
     <style>
-        
-        body { background-color: #121212; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
-        .header { background: #1a1a1a; padding: 15px; border-bottom: 2px solid #f39c12; text-align: center; }
-        .user-panel { 
-            background: linear-gradient(135deg, #f39c12, #aa6c06); 
-            margin: 15px; padding: 20px; border-radius: 15px; color: #000; 
-        }
+        body { background-color: #121212; color: #fff; font-family: sans-serif; text-align: center; margin: 0; }
+        .user-panel { background: linear-gradient(135deg, #f39c12, #aa6c06); margin: 15px; padding: 20px; border-radius: 15px; color: #000; }
         .balance { font-size: 28px; font-weight: bold; }
-        .game-grid { 
-            display: grid; grid-template-columns: repeat(3, 1fr); 
-            gap: 10px; padding: 15px; 
-        }
-        .game-card { 
-            background: #222; border-radius: 10px; padding: 10px; 
-            text-align: center; border: 1px solid #333; 
-        }
-        .game-img { width: 100%; border-radius: 5px; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h2 style="color: #f39c12; margin: 0;">LUCKY-1U VIP</h2>
-    </div>
-
     <div class="user-panel">
-        <div style="font-weight: bold;">👋 សួស្តី, <span id="user-name">Guest</span></div>
-        <div style="font-size: 14px;">ID របស់អ្នក: <span id="user-id" style="font-weight: bold;">000000</span></div>
-        <hr style="border: 0.5px solid rgba(0,0,0,0.1); margin: 10px 0;">
-        <div style="font-size: 12px;">សមតុល្យហ្វ្រី (Bonus)</div>
-        <div class="balance">$10.00</div>
+        <div>👋 សួស្តី, <span id="user-name">Guest</span></div>
+        <div style="font-size: 14px;">ID របស់អ្នក: <span id="user-id">000000</span></div>
+        <div style="font-size: 12px; margin-top: 10px;">សមតុល្យហ្វ្រី (Bonus)</div>
+        <div class="balance">$<span id="user-balance">0.00</span></div>
     </div>
 
-    <div style="padding-left: 15px; color: #f39c12;">ហ្គេមពេញនិយម</div>
-    
-    <div class="game-grid">
-        <div class="game-card">
-            <img src="https://placehold.co/100x100/333/f39c12?text=SLOT" class="game-img">
-            <div style="font-size: 10px; margin-top: 5px;">SLOT</div>
-        </div>
-        <div class="game-card">
-            <img src="https://placehold.co/100x100/333/f39c12?text=FISH" class="game-img">
-            <div style="font-size: 10px; margin-top: 5px;">FISH</div>
-        </div>
-        <div class="game-card">
-            <img src="https://placehold.co/100x100/333/f39c12?text=LIVE" class="game-img">
-            <div style="font-size: 10px; margin-top: 5px;">LIVE</div>
-        </div>
-    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 
-    <script>
-        
+       
+        const firebaseConfig = {
+            apiKey: "AIzaSy...", 
+            authDomain: "your-project.firebaseapp.com",
+            databaseURL: "https://your-project.firebaseio.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abc123"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
 
-        
         const user = tg.initDataUnsafe.user;
 
         if (user) {
-            
-            document.getElementById('user-name').innerText = user.first_name;
-            document.getElementById('user-id').innerText = user.id;
+            const userRef = ref(db, 'users/' + user.id);
+
+          
+            get(userRef).then((snapshot) => {
+                if (!snapshot.exists()) {
+                    
+                    const newUser = {
+                        name: user.first_name,
+                        id: user.id,
+                        balance: 10.00, // 
+                        registeredAt: new Date().toLocaleString()
+                    };
+                    set(userRef, newUser);
+                    updateUI(newUser.name, newUser.id, newUser.balance);
+                } else {
+                    
+                    const data = snapshot.val();
+                    updateUI(data.name, data.id, data.balance);
+                }
+            });
+        }
+
+        function updateUI(name, id, balance) {
+            document.getElementById('user-name').innerText = name;
+            document.getElementById('user-id').innerText = id;
+            document.getElementById('user-balance').innerText = balance.toFixed(2);
         }
     </script>
-
 </body>
 </html>
-
