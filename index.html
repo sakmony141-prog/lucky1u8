@@ -3,29 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky-1U VIP</title>
+    <title>SKY CASINO VIP</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #121212; color: #fff; font-family: sans-serif; text-align: center; margin: 0; }
-        .user-panel { background: linear-gradient(135deg, #f39c12, #aa6c06); margin: 15px; padding: 20px; border-radius: 15px; color: #000; }
-        .balance { font-size: 28px; font-weight: bold; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #1a1a1a; color: white; padding-bottom: 70px; }
+
+        /* ផ្នែកខាងលើ (Header) */
+        .header { background: #2c2c2c; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #444; }
+        .logo { height: 40px; }
+        .header-right { display: flex; align-items: center; gap: 10px; }
+        .balance-chip { background: #3d3d3d; padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; gap: 8px; font-weight: bold; color: #f1c40f; border: 1px solid #555; }
+        .btn-deposit { background: #f1c40f; color: black; padding: 6px 15px; border-radius: 5px; font-weight: bold; text-decoration: none; font-size: 14px; }
+
+        /* Banner */
+        .banner { width: 100%; height: 180px; background: url('https://your-banner-url.jpg') center/cover; margin-bottom: 20px; }
+
+        /* ម៉ឺនុយរហ័ស (Quick Actions) */
+        .quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 15px; margin-bottom: 20px; }
+        .action-item { text-align: center; font-size: 12px; color: #bbb; }
+        .icon-box { background: #333; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; font-size: 20px; color: #f1c40f; }
+
+        /* បញ្ជីហ្គេម (Game Categories) */
+        .section-title { padding: 0 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: bold; color: #f1c40f; }
+        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 15px; margin-bottom: 25px; }
+        .game-card { background: #333; border-radius: 10px; overflow: hidden; position: relative; }
+        .game-card img { width: 100%; height: 120px; object-fit: cover; }
+        .game-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.7); text-align: center; font-size: 11px; padding: 3px 0; }
+
+        /* ម៉ឺនុយខាងក្រោម (Bottom Navigation) */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #222; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #444; }
+        .nav-item { text-align: center; font-size: 11px; color: #888; text-decoration: none; }
+        .nav-item.active { color: #f1c40f; }
+        .nav-item i { font-size: 20px; display: block; margin-bottom: 2px; }
     </style>
 </head>
 <body>
 
-    <div class="user-panel">
-        <div>👋 សួស្តី, <span id="user-name">Guest</span></div>
-        <div style="font-size: 14px;">ID របស់អ្នក: <span id="user-id">000000</span></div>
-        <div style="font-size: 12px; margin-top: 10px;">សមតុល្យហ្វ្រី (Bonus)</div>
-        <div class="balance">$<span id="user-balance">0.00</span></div>
+    <div class="header">
+        <img src="https://your-logo-url.png" alt="Logo" class="logo">
+        <div class="header-right">
+            <div class="balance-chip">
+                <i class="fas fa-coins"></i>
+                <span id="user-balance">0.00</span>
+            </div>
+            <a href="#" class="btn-deposit">Deposit</a>
+        </div>
+    </div>
+
+    <div class="banner"></div>
+
+    <div class="quick-actions">
+        <div class="action-item"><div class="icon-box"><i class="fas fa-wallet"></i></div>Deposit</div>
+        <div class="action-item"><div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>Withdraw</div>
+        <div class="action-item"><div class="icon-box"><i class="fas fa-tasks"></i></div>Task</div>
+        <div class="action-item"><div class="icon-box"><i class="fas fa-gift"></i></div>Invite</div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-slot-machine"></i> Slot Games</div>
+    <div class="game-grid">
+        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PG SLOT</div></div>
+        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PP SLOT</div></div>
+        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">CQ9 SLOT</div></div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-spade"></i> Live Casino</div>
+    <div class="game-grid">
+        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">PP LIVE</div></div>
+        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">BBIN LIVE</div></div>
+        <div class="game-card"><img src="https://via.placeholder.com/150" alt="Game"><div class="game-label">DB LIVE</div></div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active"><i class="fas fa-home"></i>Home</a>
+        <a href="#" class="nav-item"><i class="fas fa-bullhorn"></i>Promotion</a>
+        <a href="#" class="nav-item"><i class="fas fa-headset"></i>Support</a>
+        <a href="#" class="nav-item"><i class="fas fa-user"></i>Account</a>
     </div>
 
     <script type="module">
-        // ១. ហៅប្រើប្រាស់ Firebase តាមរយៈ CDN
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 
-        // ២. កូដភ្ជាប់ Firebase របស់មិត្ត
+        // *** កន្លែងនេះ៖ ណាវីតត្រូវដាក់ Firebase Config របស់មិត្ត ***
         const firebaseConfig = {
             apiKey: "AIzaSyA273ParAWzm4_vuPwO0OhjZ7oOLlPTv1Q",
             authDomain: "luckytest-b2f38.firebaseapp.com",
@@ -33,50 +94,25 @@
             projectId: "luckytest-b2f38",
             storageBucket: "luckytest-b2f38.firebasestorage.app",
             messagingSenderId: "583820360492",
-            appId: "1:583820360492:web:f9887975b7abb4ff7dca89",
-            measurementId: "G-H00L4D154G"
+            appId: "1:583820360492:web:f9887975b7abb4ff7dca89"
         };
 
-        // ៣. ចាប់ផ្តើមដំណើរការ Firebase
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        
-        // ៤. ចាប់ផ្តើមដំណើរការ Telegram Web App
         const tg = window.Telegram.WebApp;
         tg.ready();
-        tg.expand();
 
         const user = tg.initDataUnsafe.user;
 
         if (user) {
             const userRef = ref(db, 'users/' + user.id);
-
-            // ពិនិត្យមើលទិន្នន័យភ្ញៀវ
-            get(userRef).then((snapshot) => {
-                if (!snapshot.exists()) {
-                    // បើជាភ្ញៀវថ្មី៖ ចុះឈ្មោះអូតូ និងថែមលុយ $10
-                    const newUser = {
-                        name: user.first_name,
-                        id: user.id,
-                        balance: 10.00,
-                        registeredAt: new Date().toLocaleString()
-                    };
-                    set(userRef, newUser);
-                    updateUI(newUser.name, newUser.id, newUser.balance);
-                } else {
-                    // បើភ្ញៀវចាស់៖ បង្ហាញទិន្នន័យដែលមានស្រាប់
+            // ប្រើ onValue ដើម្បីឱ្យវា Update លុយអូតូពេលមិត្តកែក្នុង Firebase
+            onValue(userRef, (snapshot) => {
+                if (snapshot.exists()) {
                     const data = snapshot.val();
-                    updateUI(data.name, data.id, data.balance);
+                    document.getElementById('user-balance').innerText = data.balance.toFixed(2);
                 }
-            }).catch((error) => {
-                console.error("Firebase Error: ", error);
             });
-        }
-
-        function updateUI(name, id, balance) {
-            document.getElementById('user-name').innerText = name;
-            document.getElementById('user-id').innerText = id;
-            document.getElementById('user-balance').innerText = balance.toFixed(2);
         }
     </script>
 </body>
