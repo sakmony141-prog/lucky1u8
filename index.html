@@ -40,12 +40,32 @@
 </head>
 <body>
 
-    <div class="header">
-        <img src="https://via.placeholder.com/100x35?text=LOGO" class="logo">
-        <div style="display: flex; gap: 10px;">
-            <div class="balance-chip"><i class="fas fa-coins"></i> $<span class="global-balance">0.00</span></div>
-            <a href="#" class="btn-deposit-head">Deposit</a>
+<div id="user-profile-section" style="background: #262626; margin: 15px; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; border: 1px solid #333;">
+    
+    <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+            <h2 id="tg-name" style="color: #fff; font-size: 16px; font-weight: bold;">Loading...</h2>
+            <span style="background: #f1c40f; color: #000; font-size: 10px; padding: 1px 6px; border-radius: 4px; font-weight: bold;">VIP0</span>
         </div>
+        
+        <div style="color: #888; font-size: 13px; display: flex; align-items: center; gap: 5px; margin-bottom: 8px;">
+            ID: <span id="tg-id">00000</span> 
+            <i class="far fa-copy" style="cursor: pointer; font-size: 12px;" onclick="copyID()"></i>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 5px; color: #f1c40f; font-weight: bold; font-size: 18px;">
+            <i class="fas fa-coins"></i>
+            $<span id="fb-balance">0.00</span>
+        </div>
+    </div>
+
+    <div style="position: relative;">
+        <div style="width: 75px; height: 75px; border-radius: 50%; border: 2px solid #f1c40f; padding: 2px;">
+            <img id="tg-avatar" src="https://via.placeholder.com/75" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+        </div>
+        <div style="position: absolute; bottom: 5px; right: 5px; width: 12px; height: 12px; background: #2ecc71; border-radius: 50%; border: 2px solid #262626;"></div>
+    </div>
+</div>
     </div>
 
     <div id="home-page" class="page-section active">
@@ -123,3 +143,4 @@
     </script>
 </body>
 </html>
+
